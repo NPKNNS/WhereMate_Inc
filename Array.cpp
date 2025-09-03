@@ -1,0 +1,65 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class Array{
+    protected:
+    float *data;
+    int lenght, size;
+
+    private:
+    //Create new Array for storing data
+    void create(int size = 10){
+        this->size = size;
+        this->lenght = 0;
+        this->data = new float[size];
+    }
+
+    //Resize of array if data is too big to fit in ..... ARRAY. nan, don't imagin somgthing dirty in your mind >^<
+    void resize(int gain = 10){
+        int newsite = this->size + gain;
+        float *newdata = new float[newsite];
+
+        for(int i = 0; i <= lenght; i++){
+            newdata[i] = this->data[i];
+        }
+
+        delete[] data;
+        this->data = newdata;
+        this->size = newsite;
+    }
+
+    public:
+    //adding data to array
+    //at last index
+    void add(float newdata){
+        if(this->lenght < (this->size - 1)){
+            this->lenght++;
+            this->data[this->lenght] = newdata;
+        }else{
+            resize();
+            add(newdata);
+        }
+    }
+
+    //at any index
+    void add(float newdata, int index){
+        if((index > lenght + 1) || (index < 0)){
+            cerr << "index is too far form lenght or below 0. plase try again with index <= %d (lenght of array + 1) and not below ZERO" << this->lenght + 1;
+            return;
+        }
+
+        if(index == lenght + 1){
+            add(newdata);
+            
+            return;
+        }
+        for(int i = lenght; i <= index; i--){
+
+        }
+    }
+
+    void remove();
+    void swap();
+    float get();
+};
