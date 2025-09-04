@@ -51,15 +51,74 @@ class Array{
 
         if(index == lenght + 1){
             add(newdata);
-            
             return;
         }
-        for(int i = lenght; i <= index; i--){
 
+        if(this->lenght >= this->size -1) resize();
+
+        for(int i = lenght; i <= index; i--){
+            this->data[i + 1] == this->data[i];
         }
+
+        this->data[index] = newdata;
+        this->lenght ++;
+        return;
     }
 
-    void remove();
-    void swap();
-    float get();
+    //remove data
+    //at last index
+    void remove(){
+        this->lenght--;
+    }
+
+    //at any index
+    void remove(int index){
+        if((index > lenght) || (index < 0)){
+            cerr << "notthing at thaat index or number is below ZERO plase try again with index that lessthan lenght and not below zero";
+            return;
+        }
+
+        if(index == lenght){
+            remove();
+            return;
+        }
+
+        for(int i = index; i <= lenght; i++){
+            this->data[i] == this->data[i + 1];
+        }
+
+        this->lenght --;
+        return;
+    }
+
+    void swap(int indexA, int indexB){
+        if((indexA > lenght) || (indexA < 0) || (indexB > lenght) || (indexB < 0)){
+            cerr << "notthing at thaat index or number is below ZERO plase try again with index that lessthan lenght and not below zero";
+            return;
+        }
+        
+        float temp = this->data[indexA];
+        this->data[indexA] = this->data[indexB];
+        this->data[indexB] = temp;
+        return;
+    }
+    float get(int index){
+        if((index > lenght) || (index < 0)){
+            cerr << "notthing at thaat index or number is below ZERO plase try again with index that lessthan lenght and not below zero";
+            return;
+        }
+
+        return this->data[index];
+    }
+
+    int find(float input){
+        for(int i = 0; i <= this->lenght; i++){
+            int *location = new array
+
+            if(this->data[i] == input){
+
+            }
+        }
+    }
+    void show();
 };
